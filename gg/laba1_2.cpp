@@ -2,7 +2,7 @@
 #include <cmath>
 int main()
 {
-	int x;
+	double x;
 	setlocale(LC_ALL, "RU");
 	std::cout << "Введите Х:";
 	std::cin >> x;
@@ -11,7 +11,7 @@ int main()
 		std::cout << "Y = " << ((2 + cos(pow(x, 3) + 3)) / (4 + pow(x, 2)));
 
 	}
-	if (x >= -2 && x < 3)
+	if (x >= -2 && x < 3 && (2 * pow(x, 2) + pow(x, 3)) != 0)
 	{
 		std::cout << "Y = " << ((2 - exp(-2 * x)) / (2 * pow(x, 2) + pow(x, 3)));
 	}
