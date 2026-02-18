@@ -1,9 +1,11 @@
 ﻿#include <iostream>
+#include <limits>
+#include <cmath>
 using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "RU");
-	int n, cnt = 0, sum = 0;
+	float n, cnt = 0, sum = 0;
 	while (true)
 	{
 		cout << "Введите целое положительное число: ";
@@ -11,22 +13,20 @@ int main()
 		if (cin.fail())
 		{
 				cin.clear();
-				cin.ignore(1000000, '\n');
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
 				cout << "Ошибка! Введите число." << endl;
 				continue;
 		}
-		if (n <= 0)
+		if (n <= 0.0f || fmod(n, 1.0f) != 0.0)
 		{
-			cout << "Ошибка! Введите целое ПОЛОЖИТЕЛЬНОЕ число." << endl;
-			cin.clear();
-			cin.ignore(1000000, '\n');
+			cout << "Ошибка! Введите ЦЕЛОЕ ПОЛОЖИТЕЛЬНОЕ число." << endl;
 			continue;
 		}
 		break;
 	}
 	while (n > 0)
 	{
-		sum += n % 10;
+		sum += fmod(n, 10);
 		cnt++;
 		n /= 10;
 	}
