@@ -41,7 +41,7 @@
 //	cout << "Массив состоит из: ";
 //	for (int  i = 0; i < 10; i++)
 //	{
-//		*(M + i) = fmod(0.001*rand(), kon - nach) + nach; 
+//		*(M + i) = fmodf(0.001*rand(), kon - nach) + nach; 
 //		cout << *(M + i) << ' ';
 //	}
 //	cout << endl;
