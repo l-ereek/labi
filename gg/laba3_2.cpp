@@ -18,6 +18,12 @@
 //			cout << "Ошибка, введите ЧИСЛО.";
 //			continue;
 //		}
+//		cin.ignore(1000, '\n');
+//		if (cin.gcount() > 1)
+//		{
+//			cout << "Введите ТОЛЬКО число: ";
+//			continue;
+//		}
 //		break;
 //	}
 //	while (true)
@@ -41,7 +47,7 @@
 //	cout << "Массив состоит из: ";
 //	for (int  i = 0; i < 10; i++)
 //	{
-//		*(M + i) = fmodf(0.001*rand(), kon - nach) + nach; 
+//		*(M + i) = fmod(0.001*rand(), kon - nach) + nach; 
 //		cout << *(M + i) << ' ';
 //	}
 //	cout << endl;
