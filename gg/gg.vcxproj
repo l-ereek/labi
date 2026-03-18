@@ -128,8 +128,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="gg.cpp" />
-    <ClCompile Include="laba3_1.cpp" />
-    <ClCompile Include="laba3_2.cpp" />
+    <ClCompile Include="laba4_1.cpp" />
+    <ClCompile Include="laba4_2.cpp" />
     <ClCompile Include="laba3_3.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
