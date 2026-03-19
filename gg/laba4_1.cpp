@@ -5,23 +5,25 @@ int main()
 {
     using namespace std;
     setlocale(LC_ALL, "RU");
-    string st;
+
+    char st[1000];
     int cnt = 0;
+    bool inWord = false; 
     cout << "Введите предложение: ";
-    getline(cin, st);
-    bool w = false;
-    for (char c : st)
+    cin.getline(st, 1000);
+    for (int i = 0; st[i] != '\0'; i++)
     {
-        if (c == ' ' || c == ':' || c == ';')
-            w = false;
-        else if (!w)
+        if ( st[i] == ' ' || st[i] == ',' || st[i] == ';' || st[i] == '.')
+            inWord = false; 
+        else
         {
-            cnt++;
-            w = true;
+            if (!inWord)
+            {
+                cnt++;
+                inWord = true; 
+            }
         }
     }
 
     cout << "Количество слов в предложении: " << cnt << endl;
-
-    return 0;
 }
