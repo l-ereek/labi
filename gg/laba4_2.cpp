@@ -1,61 +1,56 @@
-ï»¿//#include <iostream>
-//#include <cmath>
-//int main()
-//{
-//	using namespace std;
-//	setlocale(LC_ALL, "RU");
-//	srand(time(0));
-//	float M[10];
-//	float nach, kon;
-//	while (true)
-//	{
-//		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð°Ñ‡Ð°Ð»Ð¾ Ð´Ð¸Ð°Ð¿Ð°Ð·Ð¾Ð½Ð° Ð´Ð»Ñ Ð³ÐµÐ½ÐµÑ€Ð°Ñ†Ð¸Ð¸ Ð¼Ð°ÑÑÐ¸Ð²Ð°: ";
-//		cin >> nach;
-//		if (cin.fail())
-//		{
-//			cin.clear();
-//			cin.ignore(100, '\n');
-//			cout << "ÐžÑˆÐ¸Ð±ÐºÐ°, Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð§Ð˜Ð¡Ð›Ðž.";
-//			continue;
-//		}
-//		cin.ignore(1000, '\n');
-//		if (cin.gcount() > 1)
-//		{
-//			cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¢ÐžÐ›Ð¬ÐšÐž Ñ‡Ð¸ÑÐ»Ð¾: ";
-//			continue;
-//		}
-//		break;
-//	}
-//	while (true)
-//	{
-//		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð½ÐµÑ† Ð´Ð¸Ð°Ð¿Ð°Ð·Ð¾Ð½Ð° Ð´Ð»Ñ Ð³ÐµÐ½ÐµÑ€Ð°Ñ†Ð¸Ð¸ Ð¼Ð°ÑÑÐ¸Ð²Ð°: ";
-//		cin >> kon;
-//		if (cin.fail())
-//		{
-//			cin.clear();
-//			cin.ignore(1000, '\n');
-//			cout << "ÐžÑˆÐ¸Ð±ÐºÐ°, Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð§Ð˜Ð¡Ð›Ðž.";
-//			continue;
-//		}
-//		if (nach >= kon)
-//		{
-//			cout << "ÐžÑˆÐ¸Ð±ÐºÐ°. ÐÐ°Ñ‡Ð°Ð»Ð¾ Ð´Ð¾Ð»Ð¶Ð½Ð¾ Ð±Ñ‹Ñ‚ÑŒ Ð¼ÐµÐ½ÑŒÑˆÐµ ÐºÐ¾Ð½Ñ†Ñƒ." << endl;
-//			continue;
-//		}
-//		break;
-//	}
-//	cout << "ÐœÐ°ÑÑÐ¸Ð² ÑÐ¾ÑÑ‚Ð¾Ð¸Ñ‚ Ð¸Ð·: ";
-//	for (int  i = 0; i < 10; i++)
-//	{
-//		*(M + i) = fmod(0.001*rand(), kon - nach) + nach; 
-//		cout << *(M + i) << ' ';
-//	}
-//	cout << endl;
-//	float cnt = 1;
-//	for (int i = 0; i < 10; i++)
-//	{
-//		if (*(M + i) > 0)
-//			cnt += *(M + i);
-//	}
-//	cout << "ÐŸÑ€Ð¾Ð¸Ð·Ð²ÐµÐ´ÐµÐ½Ð¸Ðµ Ð¿Ð¾Ð»Ð¾Ð¶Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð¼Ð°ÑÑÐ¸Ð²Ð°: " << cnt << endl;
-//}
+#include <iostream>
+#include <string>
+int main()
+{
+	using namespace std;
+	setlocale(LC_ALL, "Russian");
+	int sizeT, i = 0;
+	string res, st, A, B;
+	while (true)
+	{
+		cout << "Ââåäèòå ïðåäëîæåíèå: " << endl;
+		getline(cin, st);
+		if (st.empty())
+		{
+			cout << "Îøèáêà! Ñòðîêà íå ìîæåò áûòü ïóñòîé: " << endl;
+			getline(cin, st);
+			continue;
+		}
+		cout << "Ââåäè ñëîâî, êîòîðîå õîòèòå çàìåíèòü: " << endl;
+		cin >> A;
+		if (A.empty() )
+		{
+			cout << "Îøèáêà! Cëîâî íå ìîæåò áûòü ïóñòûì: " << endl;
+			cin >> A;
+			continue;
+		}
+		cout << "Ââåäè ñëîâî, êîòîðûì õîòèòå çàìåíèòü ïðåäûäóùåå: " << endl;
+		cin >> B;
+		if (B.empty())
+		{
+			cout << "Îøèáêà! Cëîâî íå ìîæåò áûòü ïóñòûì: " << endl;
+			cin >> B;
+			continue;
+		}
+		break;
+	}
+	sizeT = st.length();
+	while (i < sizeT)
+	{
+		if (st[i] == ' ')
+		{
+			res += st[i];
+			i++;
+			continue;
+		}
+		int nach = i;
+		while (i < sizeT && st[i] != ' ')
+			i++;
+		string w = st.substr(nach, i - nach);
+		if (w == A)
+			res += B;
+		else
+			res += w;
+	}
+	cout << "Ðåçóëüòàò: " << res;
+}
