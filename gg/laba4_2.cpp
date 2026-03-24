@@ -16,7 +16,14 @@ int main()
 			getline(cin, st);
 			continue;
 		}
-		cout << "Введи слово, которое хотите заменить: " << endl;
+
+		if (st.find_first_not_of(" ") == st.npos)
+		{
+			cout << "Ошибка! Текст не может состоять только из пробелов.";
+			continue;
+		}
+
+		cout << "Введите слово, которое хотите заменить: " << endl;
 		cin >> A;
 		if (A.empty() )
 		{
@@ -24,12 +31,22 @@ int main()
 			cin >> A;
 			continue;
 		}
-		cout << "Введи слово, которым хотите заменить предыдущее: " << endl;
+		if (A.find_first_not_of(" ") == A.npos)
+		{
+			cout << "Ошибка! Слово не может состоять только из пробелов.";
+			continue;
+		}
+		cout << "Введите слово, которым хотите заменить предыдущее: " << endl;
 		cin >> B;
 		if (B.empty())
 		{
 			cout << "Ошибка! Cлово не может быть пустым: " << endl;
 			cin >> B;
+			continue;
+		}
+		if (B.find_first_not_of(" ") == B.npos)
+		{
+			cout << "Ошибка! Слово не может состоять только из пробелов.";
 			continue;
 		}
 		break;
