@@ -69,5 +69,5 @@ int main()
 		else
 			res += w;
 	}
-	cout << "Ğåçóëüòàò: " << res;
+	cout << "Ğåçóëüòàò: " << res << endl;;
 }
