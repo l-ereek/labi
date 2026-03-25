@@ -12,41 +12,67 @@ int main()
 		getline(cin, st);
 		if (st.empty())
 		{
-			cout << "Ошибка! Строка не может быть пустой: " << endl;
-			getline(cin, st);
+			cout << "Ошибка! Строка не может быть пустой." << endl;
 			continue;
 		}
 
-		if (st.find_first_not_of(" ") == st.npos)
+		int pr = 0;
+		for (int i = 0; i != st.length(); i++)
+			if (st[i] == ' ')
+				pr++;
+		if (pr == st.length())
 		{
-			cout << "Ошибка! Текст не может состоять только из пробелов.";
+			cout << "Ошибка! Слово не может состоять только из пробелов." << endl;
 			continue;
 		}
+		break;
+	}
 
+	while (true)
+	{
 		cout << "Введите слово, которое хотите заменить: " << endl;
 		cin >> A;
-		if (A.empty() )
+		if (st.find(A) == A.npos)
 		{
-			cout << "Ошибка! Cлово не может быть пустым: " << endl;
-			cin >> A;
+			cout << "Такого слова нет!" << endl;
 			continue;
 		}
-		if (A.find_first_not_of(" ") == A.npos)
+
+		if (A.empty())
 		{
-			cout << "Ошибка! Слово не может состоять только из пробелов.";
+			cout << "Ошибка! Cлово не может быть пустым." << endl;
 			continue;
 		}
+
+		int pr1 = 0;
+		for (int i = 0; i != A.length(); i++)
+			if (A[i] == ' ')
+				pr1++;
+		if (pr1 == A.length())
+		{
+			cout << "Ошибка! Слово не может состоять только из пробелов." << endl;
+			continue;
+		}
+		break;
+	}
+
+	while(true)
+	{
 		cout << "Введите слово, которым хотите заменить предыдущее: " << endl;
 		cin >> B;
 		if (B.empty())
 		{
-			cout << "Ошибка! Cлово не может быть пустым: " << endl;
-			cin >> B;
+			cout << "Ошибка! Cлово не может быть пустым." << endl;
 			continue;
 		}
-		if (B.find_first_not_of(" ") == B.npos)
+
+		int pr2 = 0;
+		for (int i = 0; i != B.length(); i++)
+			if (B[i] == ' ')
+				pr2++;
+		if (pr2 == B.length())
 		{
-			cout << "Ошибка! Слово не может состоять только из пробелов.";
+			cout << "Ошибка! Слово не может состоять только из пробелов." << endl;
 			continue;
 		}
 		break;
