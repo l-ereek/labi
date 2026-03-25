@@ -1,10 +1,13 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
+	using namespace std;
+
 int main()
 {
-	using namespace std;
 	setlocale(LC_ALL, "Russian");
-	int sizeT, i = 0;
+	system("chcp 1251");
+	int i = 0;
 	string res, st, A, B;
 	while (true)
 	{
@@ -37,48 +40,22 @@ int main()
 			cout << "Такого слова нет!" << endl;
 			continue;
 		}
-
-		if (A.empty())
-		{
-			cout << "Ошибка! Cлово не может быть пустым." << endl;
-			continue;
-		}
-
-		int pr1 = 0;
-		for (int i = 0; i != A.length(); i++)
-			if (A[i] == ' ')
-				pr1++;
-		if (pr1 == A.length())
-		{
-			cout << "Ошибка! Слово не может состоять только из пробелов." << endl;
-			continue;
-		}
 		break;
 	}
 
-	while(true)
+	while (true)
 	{
 		cout << "Введите слово, которым хотите заменить предыдущее: " << endl;
 		cin >> B;
-		if (B.empty())
-		{
-			cout << "Ошибка! Cлово не может быть пустым." << endl;
+		if (A == B)
+			{
+			cout << "A не может совпадать с B!" << endl;
 			continue;
-		}
-
-		int pr2 = 0;
-		for (int i = 0; i != B.length(); i++)
-			if (B[i] == ' ')
-				pr2++;
-		if (pr2 == B.length())
-		{
-			cout << "Ошибка! Слово не может состоять только из пробелов." << endl;
-			continue;
-		}
+			}
 		break;
 	}
-	sizeT = st.length();
-	while (i < sizeT)
+
+	while (i < st.length())
 	{
 		if (st[i] == ' ')
 		{
@@ -87,7 +64,7 @@ int main()
 			continue;
 		}
 		int nach = i;
-		while (i < sizeT && st[i] != ' ')
+		while (i < st.length() && st[i] != ' ')
 			i++;
 		string w = st.substr(nach, i - nach);
 		if (w == A)
