@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="laba4_1.cpp">
+    <ClCompile Include="laba5_1.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="laba4_2.cpp">
+    <ClCompile Include="laba5_2.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="laba5_3.cpp">
