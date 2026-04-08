@@ -1,85 +1,69 @@
-#include <iostream>
-#include <random>
-using namespace std;
-
-int Size(string v)
-{
-	int n;
-	while (true)
-	{
-		cout << v;
-		cin >> n;
-		if (!cin || n <= 0)
-		{
-			cin.clear();
-			cin.ignore(1000, '\n');
-			cout << "Ошибка! Введите целое положительное число!" << endl;
-			continue;
-		}
-		cin.ignore(1000, '\n');
-		if (cin.gcount() > 1)
-		{
-			cout << "После числа были введены дополнительные данные!" << endl;
-			continue;
-		}
-		return n;
-
-	}
-}
-int Sum(int M[], int size)
-{
-	int sum, cnt;
-	for (int i = 0; i < size; i++)
-		if (M[i] > 0)
-		{
-			cnt++;
-			sum += M[i];
-		}
-	if (cnt == 0)
-		return 0;
-	else
-		return sum / cnt;
-}
-
-int* Gen(const int size)
-{
-	int* M = new int[size];
-	for (int i = 0; i < size; i++)
-	{
-		M[i] = rand() % 61 - 30;
-	}
-	return M;
-}
-
-void Mas(int M[], const int size)
-{
-	for (int i = 0; i < size; i++)
-		cout << M[i] << " ";
-}
-
-int main()
-{
-	setlocale(LC_ALL, "RU");
-	srand(time(0));
-	int N = Size("Введите размер массива Х: ");
-	int M = Size("Введите размер массива Y: ");
-	int K = Size("Введите размер массива Z: ");
-
-	int* X = Gen(N);
-	int* Y = Gen(M);
-	int* Z = Gen(K);
-
-	cout << "Массив X равен: "; Mas(X, N); cout << endl;
-	cout << "Сумма его положительных элементов равна:" << Sum(X, N) << endl;
-	cout << endl;
-	cout << "Массив Y равен: "; Mas(Y, M); cout << endl;
-	cout << "Сумма его положительных элементов равна:" << Sum(Y, M) << endl;
-	cout << endl;
-	cout << "Массив Z равен: "; Mas(Z, K); cout << endl;
-	cout << "Сумма его положительных элементов равна:" << Sum(Z, K) << endl;
-
-	delete[]X;
-	delete[]Y;
-	delete[]Z;
-
-}
+//#include <iostream>
+//using namespace std;
+//const int M = 20;
+//int yacheika[M + 1][M + 1];
+//
+//int Combin2(int n, int k)
+//{
+//	if (k < 0 || k > n)
+//		return 0;
+//	if (k == 0 || k == n)
+//		return 1;
+//	if (yacheika[n][k] != -1)
+//		return yacheika[n][k];
+//	yacheika[n][k] = Combin2(n - 1, k) + Combin2(n - 1, k - 1);
+//	return yacheika[n][k];
+//}
+//int main()
+//{
+//	setlocale(LC_ALL, "RU");
+//	int n;
+//	for (int n = 0; n <= M; n++)
+//		for (int k = 0; k <= M; k++)
+//			yacheika[n][k] = -1;
+//
+//	while (true)
+//	{
+//		cout << "Введите N: ";
+//		cin >> n;
+//		if (!cin || n > 20)
+//		{
+//			cin.clear();
+//			cin.ignore(1000, '\n');
+//			cout << "Ошибка! Введите целое число меньше 20: " << endl;
+//			continue;
+//		}
+//		cin.ignore(1000, '\n');
+//		if (cin.gcount() > 1)
+//		{
+//			cout << "После числа были введены дополнительные данные!" << endl;
+//			continue;
+//		}
+//		break;
+//	}
+//	for (int i = 1; i <= 5; i++)
+//	{
+//		int k;
+//		while (true)
+//		{
+//			cout << "Введите K: " << i << "-й раз" << endl;
+//			cin >> k;
+//			if (!cin || k < 0 || k > n)
+//			{
+//				cin.clear();
+//				cin.ignore(1000, '\n');
+//				cout << "Ошибка! Введите целое число от 0 до N: " << endl;
+//				continue;
+//			}
+//			cin.ignore(1000, '\n');
+//			if (cin.gcount() > 1)
+//			{
+//				cout << "После числа были введены дополнительные данные!" << endl;
+//				continue;
+//			}
+//			break;
+//		}
+//		cout << "C(" << n << ", " << k << ") = " << Combin2(n, k) << endl;
+//	}
+//	return 0;
+//}
