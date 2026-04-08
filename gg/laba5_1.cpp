@@ -28,8 +28,7 @@ int Size(string v)
 }
 int Sum(int M[], int size)
 {
-	int sum = 0;
-	int cnt = 0;
+	int sum, cnt;
 	for (int i = 0; i < size; i++)
 		if (M[i] > 0)
 		{
