@@ -21,7 +21,7 @@
     <ClCompile Include="laba4_2.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="laba3_3.cpp">
+    <ClCompile Include="laba5_3.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="gg.cpp">

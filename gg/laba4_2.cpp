@@ -1,44 +1,61 @@
-//#include <iostream>
-//#include <string>
-//using namespace std;
-//
-//float Znach(string v)
-//{
-//	float n;
-//	cout << v;
-//	cin >> n;
-//	while (true)
-//	{
-//		if (cin.fail() || n != floor(n))
-//		{
-//			cin.clear();
-//			cin.ignore(1000, '\n');
-//			cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! ÐÑƒÐ¶Ð½Ð¾ Ð²ÐµÑ‰ÐµÑÑ‚Ð²ÐµÐ½Ð½Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾" << endl;
-//			continue;
-//		}
-//		break;
-//	}
-//	return n;
-//}
-//float Obmen(float A, float B, float C)
-//{
-//	float m = A;
-//	A = B;
-//	B = C;
-//	C = m;
-//	return A, B, C;
-//}
-//int main()
-//{
-//	setlocale(LC_ALL, "RU");
-//
-//	float A1 = Znach("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð´Ð»Ñ Ð1: ");
-//	float B1 = Znach("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð´Ð»Ñ Ð’1: ");
-//	float C1 = Znach("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð´Ð»Ñ Ð1: ");
-//	float A2 = Znach("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð´Ð»Ñ Ð2: ");
-//	float B2 = Znach("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð´Ð»Ñ Ð’2: ");
-//	float C2 = Znach("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð´Ð»Ñ Ð¡2: ");
-//
-//	cout << ""<< Obmen(A1, B1, C1)<< endl;
-//	cout << ""<< Obmen(A2, B2, C2);
-//}
+#include <iostream>
+#include <string>
+using namespace std;
+
+float Znach(string v)
+{
+	float n;
+	while (true)
+	{
+		cout << v;
+		cin >> n;
+		if (!cin)
+		{
+			cin.clear();
+			cin.ignore(1000, '\n');
+			cout << "Îøèáêà! Ââåäèòå âåùåñòâåííîå ÷èñëî!"<< endl;
+			continue;
+		}
+		cin.ignore(1000, '\n');
+		if (cin.gcount() > 1)
+		{
+			cout << "Ïîñëå ÷èñëà áûëè ââåäåíû äîïîëíèòåëüíûå äàííûå!" << endl;
+			continue;
+		}
+		return n;
+	
+	}
+}
+void Obmen(float& A, float& B, float& C)
+{
+	float m = C;
+	C = B;
+	B = A;
+	A = m;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "RU");
+
+	float A1 = Znach("Ââåäèòå çíà÷åíèå äëÿ À1: ");
+	float B1 = Znach("Ââåäèòå çíà÷åíèå äëÿ Â1: ");
+	float C1 = Znach("Ââåäèòå çíà÷åíèå äëÿ C1: ");
+
+	cout << "Áûëî: " << A1 << " " << B1 << " " << C1 << endl;
+
+	Obmen(A1, B1, C1);
+
+	cout << "Ñòàëî:" << A1 << " " << B1 << " " << C1 << endl;
+
+	float A2 = Znach("Ââåäèòå çíà÷åíèå äëÿ À2: ");
+	float B2 = Znach("Ââåäèòå çíà÷åíèå äëÿ Â2: ");
+	float C2 = Znach("Ââåäèòå çíà÷åíèå äëÿ Ñ2: ");
+
+	cout << "Áûëî: " << A2 << " " << B2 << " " << C2 << endl;
+
+	Obmen(A2, B2, C2);
+
+	cout << "Ñòàëî: " << A2 << " " << B2 << " " << C2 << endl;
+
+}
