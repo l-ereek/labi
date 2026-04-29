@@ -10,16 +10,17 @@ void CrSt(Nom_2 s[], int n)
         s[i].fuo = f[rand() % 7] + u[rand()%7] + o[rand() % 7];
         s[i].gr = g[rand() % 7];
         s[i].sum = 3.0 + (rand() % 300) / 100.0;
-        s[i].d = 5000 + (rand() % 300000);
+        s[i].d = 5000 + (rand() % 30000);
         s[i].pr = s[i].d < (2 * min_zarplata);
     }
 }
 
 void vivod2(const Nom_2 s[], int n, const string str)
 {
-    std:: cout << str << endl;
+    cout << str << endl << endl;
     for (int i = 0; i < n; i++)
     {
+        cout << i + 1 << ". " << endl;
         cout << s[i].fuo << endl;
         cout << "Группа: " << s[i].gr << "\n";
         cout << "Средний балл: " << s[i].sum << "\n";
@@ -51,9 +52,9 @@ void Pr(const Nom_2 s[], int n, Nom_2 list[], int& cnt)
         for (int j = 0;j < prCnt - 1 - i; j++)
             if (prSt[j].sum < prSt[j + 1].sum)
             {
-                Nom_2 temp = prSt[j];
+                Nom_2 mesto = prSt[j];
                 prSt[j] = prSt[j + 1];
-                prSt[j + 1] = temp;
+                prSt[j + 1] = mesto;
             }
 
     for(int i = 0; i < regCnt - 1; i ++)
@@ -91,7 +92,7 @@ void res2()
     vivod2(s, n, "ИСХОДНЫЙ СПИСОК СТУДЕНТОВ");
     int cnt;
     Pr(s, n, list, cnt);
-    vivod2(list, cnt, "ОЧЕРЁДНОСТЬ ПРЕДОСТАВЛЕНИЯ МЕСТ В ОБЩЕЖИТИЕ");
+    vivod2(list, cnt, "ОЧЕРЁДНОСТЬ ПРЕДОСТАВЛЕНИЯ МЕСТ В ОБЩЕЖИТИЕ") ;
     int prCnt = 0;
     for (int i = 0; i < n; i++)
         if (s[i].pr)
