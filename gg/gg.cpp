@@ -1,116 +1,100 @@
-//#include "dann.h"
-//
-//void chistka()
-//{
-//    cin.clear();
-//    cin.ignore(1000, '\n');
-//}
-//
-//int prov(const string& str, int min, int max)
-//{
-//    int n;
-//    while (true)
-//    {
-//        cout << str;
-//        cin >> n;
-//        if (cin.fail() || n < min || n > max) {
-//            chistka();
-//            cout << "Ошибка! Введите число от " << min << " до " << max << ": ";
-//        }
-//        else {
-//            return n;
-//        }
-//    }
-//}
-//
-//double provD(const string& str, double min, double max)
-//{
-//    double n;
-//    while (true)
-//    {
-//        cout << str;
-//        cin >> n;
-//        if (cin.fail() || n < min || n > max) {
-//            cout << "Ошибка! Введите число от " << min << " до " << max << ": ";
-//            chistka();
-//        }
-//        else
-//            return n;
-//    }
-//}
-//
-//string pusto(const string& str)
-//{
-//    string n;
-//    cout << str;
-//    getline(cin, n);
-//    while (n.empty()) {
-//        cout << "Ошибка! Строка не может быть пустой: ";
-//        getline(cin, n);
-//    }
-//    return n;
-//}
-//void CrF(Nom_1 f[], int n)
-//{
-//    string name[] = { "Факультет информатики", "Факультет экономики",
-//        "Факультет математики", "Юридический факультет",
-//        "Факультет психологии", "Факультет филологии",
-//        "Медицинский факультет", "Инженерный факультет" };
-//
-//    for (int i = 0; i < n; i++)
-//    {
-//        f[i].facultet = name[i];
-//        f[i].d2023 = rand() % 100;
-//        f[i].d2024 = rand() % 100;
-//        f[i].d2025 = rand() % 100;
-//        f[i].sum = f[i].d2023 + f[i].d2024 + f[i].d2025;
-//    }
-//}
-//void vivod1(const Nom_1 f[], int n)
-//{
-//    cout << "Информация о задолженностях по факультетам:" << endl;
-//    for (int i = 0; i < n; i++)
-//    {
-//        cout << f[i].facultet << endl;
-//        cout << "2021: " << f[i].d2023 << endl;
-//        cout << "2022: " << f[i].d2024 << endl;
-//        cout << "2023: " << f[i].d2025 << endl;
-//        cout << "Всего: " << f[i].sum << endl << endl;
-//    }
-//}
-//
-//void MinMax(const Nom_1 f[], int n, string& minF, string& maxF, int& minS, int& maxS)
-//{
-//    minS = f[0].sum;
-//    maxS = f[0].sum;
-//    minF = f[0].facultet;
-//    maxF = f[0].facultet;
-//    for (int i = 0; i < n; i++)
-//    {
-//        if (f[i].sum < minS)
-//        {
-//            minS = f[i].sum;
-//            minF = f[i].facultet;
-//        }
-//        if (f[i].sum > maxS)
-//        {
-//            maxS = f[i].sum;
-//            maxF = f[i].facultet;
-//        }
-//    }
-//}
-//void res1()
-//{
-//    srand(time(0));
-//    cout << "1.АКАДЕМИЧЕСКИЕ ЗАДОЛЖЕННОСТИ" << endl;
-//    int n = prov("Введите количество факультетов (от 1 до 8): ", 1, 8);
-//    Nom_1 f[8];
-//    CrF(f, n);
-//    vivod1(f, n);
-//    string minF, maxF;
-//    int minS, maxS;
-//    MinMax(f, n, minF, maxF, minS, maxS);
-//    cout << "РЕЗУЛЬТАТЫ" << endl;
-//    cout << "Факультет с МИНИМАЛЬНЫМ количеством задолженностей (" << minS << "): " << minF << endl;
-//    cout << "Факультет с МАКСИМАЛЬНЫМ количеством задолженностей (" << maxS << "): " << maxF << endl;
-//}
+#include "dann.h"
+void CrSt(Nom_2 s[], int n)
+{
+    string f[] = { "Скребцов", "Дзейтов", "Новикова", "Лободина", "Казыханова", "Работнова", "Бурдюгов" };
+    string u[] = { " Илья", " Саид", " Юлия", " Виктория", " Ольга", " Валерия", " Дарья" };
+    string o[] = { " Олегович", " Абабукарович", " Игоревна", " Владимировна", " Станиславовна", " Алексеевна", " Сергеевич" };
+    string g[] = { " ВПР11"," ВПР12", " ВПР13", " ВПР14", " ВПР15", " ВПР16", " ВПР17" };
+    for (int i = 0; i < n; i++)
+    {
+        s[i].fuo = f[rand() % 7] + u[rand() % 7] + o[rand() % 7];
+        s[i].gr = g[rand() % 7];
+        s[i].sum = 3.0 + (rand() % 300) / 100.0;
+        s[i].d = rand() % 30000;
+        s[i].pr = s[i].d < (2 * min_zarplata);
+    }
+}
+
+void vivod2(const Nom_2 s[], int n, const string str)
+{
+    cout << str << endl << endl;
+    for (int i = 0; i < n; i++)
+    {
+        cout << i + 1 << ". " << s[i].fuo << endl;
+        cout << "Группа: " << s[i].gr << endl;
+        cout << "Средний балл: " << s[i].sum << endl;
+        cout << "Доход: " << s[i].d << endl;
+        cout << "Приоритет: " << s[i].pr << endl << endl;
+    }
+}
+
+void Pr(const Nom_2 s[], int n, Nom_2 list[], int& cnt)
+{
+    Nom_2 prSt[max_st];
+    Nom_2 obSt[max_st];
+    int prCnt = 0;
+    int obCnt = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (s[i].pr)
+        {
+            obSt[obCnt] = s[i].
+        }
+    }
+    for (int i = 0; i < prCnt - 1; i++)
+        for (int j = 0; j < prCnt - 1 - i; j++)
+            if (prSt[j].sum < prSt[j + 1].sum)
+            {
+                Nom_2 mesto = prSt[j];
+                prSt[j] = prSt[j + 1];
+                prSt[j + 1] = mesto;
+            }
+
+    for (int i = 0; i < obCnt - 1; i++)
+        for (int j = 0; j < obCnt - 1 - i; j++)
+            if (obSt[j].sum < obSt[j + 1].sum)
+            {
+                Nom_2 mesto = obSt[j];
+                obSt[j] = obSt[j + 1];
+                obSt[j + 1] = mesto;
+            }
+    cnt = 0;
+    for (int i = 0; i < prCnt; i++)
+    {
+        list[cnt] = prSt[i];
+        cnt++;
+    }
+    for (int i = 0; i < obCnt; i++)
+    {
+        list[cnt] = obSt[i];
+        cnt++;
+    }
+
+}
+void res2()
+{
+    srand(time(0));
+
+    cout << "2.ОЧЕРЕДНОСТЬ В ОБЩЕЖИТИЕ" << endl;
+    cout << "Минимальная зарплата (МРОТ): " << min_zarplata << " руб" << endl;
+    cout << "Приоритет имеют студенты с доходом на члена семьи < " << 2 * min_zarplata << " руб" << endl;
+    int n = prov("Введите количество студентов (от 1 до 20): ", 1, 20);
+    Nom_2 s[max_st];
+    Nom_2 list[max_st];
+    CrSt(s, n);
+    vivod2(s, n, "ИСХОДНЫЙ СПИСОК СТУДЕНТОВ");
+    int cnt;
+    Pr(s, n, list, cnt);
+    vivod2(list, cnt, "ОЧЕРЁДНОСТЬ ПРЕДОСТАВЛЕНИЯ МЕСТ В ОБЩЕЖИТИЕ");
+    int prCnt = 0;
+    for (int i = 0; i < n; i++)
+        if (s[i].pr)
+            prCnt++;
+
+
+    cout << "РЕЗУЛЬТАТ" << endl;
+    cout << "Всего студентов: " << n << endl;
+    cout << "Приоритетных (доход < 2*МРОТ): " << prCnt << endl;
+    cout << "Обычных: " << n - prCnt << endl;
+}
+

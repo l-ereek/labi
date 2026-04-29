@@ -31,9 +31,9 @@ void vivod2(const Nom_2 s[], int n, const string str)
 void Pr(const Nom_2 s[], int n, Nom_2 list[], int& cnt)
 {
     Nom_2 prSt[max_st];
-    Nom_2 regSt[max_st];
+    Nom_2 obSt[max_st];
     int prCnt = 0;
-    int regCnt = 0;
+    int obCnt = 0;
 
     for (int i = 0; i < n; i++)
         if (s[i].pr)
@@ -43,8 +43,8 @@ void Pr(const Nom_2 s[], int n, Nom_2 list[], int& cnt)
         }
         else
         {
-            regSt[regCnt] = s[i];
-            regCnt++;
+            obSt[obCnt] = s[i];
+            obCnt++;
         }
 
     for ( int i = 0; i < prCnt - 1; i++)
@@ -56,13 +56,13 @@ void Pr(const Nom_2 s[], int n, Nom_2 list[], int& cnt)
                 prSt[j + 1] = mesto;
             }
 
-    for(int i = 0; i < regCnt - 1; i ++)
-        for (int j = 0; j < regCnt - 1 - i; j ++)
-            if (regSt[j].sum < regSt[j + 1].sum)
+    for(int i = 0; i < obCnt - 1; i ++)
+        for (int j = 0; j < obCnt - 1 - i; j ++)
+            if (obSt[j].sum < obSt[j + 1].sum)
             {
-                Nom_2 mesto = regSt[j];
-                regSt[j] = regSt[j + 1];
-                regSt[j + 1] = mesto;
+                Nom_2 mesto = obSt[j];
+                obSt[j] = obSt[j + 1];
+                obSt[j + 1] = mesto;
             }
     cnt = 0;
     for(int i = 0; i < prCnt; i++)
@@ -70,9 +70,9 @@ void Pr(const Nom_2 s[], int n, Nom_2 list[], int& cnt)
         list[cnt] = prSt[i];
         cnt++;
     }
-    for (int i = 0; i < regCnt; i++)
+    for (int i = 0; i < obCnt; i++)
     {
-        list[cnt] = regSt[i];
+        list[cnt] = obSt[i];
         cnt++;
     }
 
