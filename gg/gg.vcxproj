@@ -127,10 +127,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="gg.cpp" />
-    <ClCompile Include="laba5_1.cpp" />
-    <ClCompile Include="laba5_2.cpp" />
-    <ClCompile Include="laba5_3.cpp" />
+    <ClCompile Include="task2.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="task1.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="dann.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
