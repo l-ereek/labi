@@ -10,7 +10,7 @@ void CrSt(Nom_2 s[], int n)
         s[i].fuo = f[rand() % 7] + u[rand()%7] + o[rand() % 7];
         s[i].gr = g[rand() % 7];
         s[i].sum = 3.0 + (rand() % 300) / 100.0;
-        s[i].d = 5000 + (rand() % 30000);
+        s[i].d = rand() % 30000;
         s[i].pr = s[i].d < (2 * min_zarplata);
     }
 }
@@ -20,12 +20,11 @@ void vivod2(const Nom_2 s[], int n, const string str)
     cout << str << endl << endl;
     for (int i = 0; i < n; i++)
     {
-        cout << i + 1 << ". " << endl;
-        cout << s[i].fuo << endl;
-        cout << "Группа: " << s[i].gr << "\n";
-        cout << "Средний балл: " << s[i].sum << "\n";
-        cout << "Доход: " << s[i].d << "\n";
-        cout << "Приоритет: " << s[i].pr << "\n"<< endl << endl ;
+        cout << i+1 <<". " << s[i].fuo << endl;
+        cout << "Группа: " << s[i].gr << endl;
+        cout << "Средний балл: " << s[i].sum << endl;
+        cout << "Доход: " << s[i].d << endl;
+        cout << "Приоритет: " << s[i].pr << endl << endl ;
     }
 }
 
@@ -61,9 +60,9 @@ void Pr(const Nom_2 s[], int n, Nom_2 list[], int& cnt)
         for (int j = 0; j < regCnt - 1 - i; j ++)
             if (regSt[j].sum < regSt[j + 1].sum)
             {
-                Nom_2 temp = regSt[j];
+                Nom_2 mesto = regSt[j];
                 regSt[j] = regSt[j + 1];
-                regSt[j + 1] = temp;
+                regSt[j + 1] = mesto;
             }
     cnt = 0;
     for(int i = 0; i < prCnt; i++)
@@ -85,7 +84,7 @@ void res2()
     cout << "2.ОЧЕРЕДНОСТЬ В ОБЩЕЖИТИЕ" << endl;
     cout << "Минимальная зарплата (МРОТ): " << min_zarplata << " руб"<< endl;
     cout << "Приоритет имеют студенты с доходом на члена семьи < " << 2 * min_zarplata << " руб" << endl;
-    int n = prov("Введите количество студентов (от 1 до 50): ", 1, 50);
+    int n = prov("Введите количество студентов (от 1 до 20): ", 1, 20);
     Nom_2 s[max_st];
     Nom_2 list[max_st];
     CrSt(s, n);

@@ -29,7 +29,6 @@ struct Nom_2
 void chistka();
 int prov(const string& str, int min, int max);
 double provD(const string& str, double min, double max);
-string getString(const string& str);
 void Menu();
 
 void CrF(Nom_1 f[], int n);

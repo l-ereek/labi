@@ -39,17 +39,6 @@ double provD(const string& str, double min, double max)
     }
 }
 
-string getString(const string& str)
-{
-    string n;
-    cout << str;
-    getline(cin, n);
-    while (n.empty()) {
-        cout << "Ошибка! Строка не может быть пустой: ";
-        getline(cin, n);
-    }
-    return n;
-}
 void CrF(Nom_1 f[], int n)
 {
     string name[] = {"Факультет информатики", "Факультет экономики",
@@ -103,8 +92,8 @@ void res1()
 {
     srand(time(0));
     cout << "1.АКАДЕМИЧЕСКИЕ ЗАДОЛЖЕННОСТИ" << endl;
-    int n = prov("Введите количество факультетов (от 1 до 20): ", 1, 20);
-    Nom_1 f[20];
+    int n = prov("Введите количество факультетов (от 1 до 8): ", 1, 8);
+    Nom_1 f[8];
     CrF(f, n);
     vivod1(f,n);
     string minF, maxF;
