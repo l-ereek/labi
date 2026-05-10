@@ -33,4 +33,18 @@
       <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="F.txt">
+      <Filter>Исходные файлы</Filter>
+    </Text>
+    <Text Include="G.txt">
+      <Filter>Исходные файлы</Filter>
+    </Text>
+    <Text Include="res.txt">
+      <Filter>Исходные файлы</Filter>
+    </Text>
+    <Text Include="text.txt">
+      <Filter>Исходные файлы</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

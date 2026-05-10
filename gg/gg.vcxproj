@@ -135,6 +135,12 @@
   <ItemGroup>
     <ClInclude Include="dann.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="F.txt" />
+    <Text Include="G.txt" />
+    <Text Include="res.txt" />
+    <Text Include="text.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

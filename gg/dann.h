@@ -1,48 +1,30 @@
-﻿#ifndef PROJECT_H
-#define PROJECT_H
+﻿#ifndef FILE_TASKS_H
+#define FILE_TASKS_H
+
+#include "task1.cpp"
+#include "task2.cpp"
+
 #include <iostream>
 #include <string>
-#include <cstdlib>
-#include <ctime>
+#include <fstream>
 #include <algorithm>
+#include <set>
+
+
 
 using namespace std;
+const string Nom1_Input_FileName = "text.txt", Nom1_Output_FileName = "res.txt";
+const string Nom2_Input_FileName = "F.txt", Nom2_Output_FileName = "G.txt";
 
-const double min_zarplata = 12000.0;
-const int max_st = 50;
+bool Prov(const string& failename);
+string Read(const string& failename);
+string Perebor(const string& text);
+void vivod1(const string& inputF, const string& outputF);
 
-
-struct Nom_1
-{
-	string facultet;
-	int d2023, d2024,d2025, sum;
-};
-
-struct Nom_2
-{
-	string fuo, gr;
-	double sum, d;
-	bool pr;
-};
-
-
-void chistka();
-int prov(const string& str, int min, int max);
-double provD(const string& str, double min, double max);
-void Menu();
-
-void CrF(Nom_1 f[], int n);
-void vivod1(const Nom_1 f[], int n);
-void MinMax(const Nom_1 f[], int n, string& minF, string& maxF, int& minS, int& maxS);
-void res1();
-
-
-void CrSt(Nom_2 s[], int n);
-void vivod2(const Nom_2 s[], int n, const string str);
-void Pr(const Nom_2 s[], int n, Nom_2 list[], int& cnt);
-void res2();
+void Chistka();
+bool PodStr(const string& filename, const string& podstr);
+void FvG(const string& inputF, const string outputF, const string& podstr);
+bool Vopros();
+string VvodPodstr();
 
 #endif
-
-
-

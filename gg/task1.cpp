@@ -1,105 +1,60 @@
 ﻿#include "dann.h"
 
-void chistka()
+bool Prov(const string& failename)
 {
-    cin.clear();
-    cin.ignore(1000, '\n');
+    fstream f(failename);
+    if (!f.is_open())
+        return false;
+    f.seekg(0, ios::end);
+    bool empty = (f.tellg() == 0);
+    f.close();
+    return !empty;
 }
 
-int prov(const string& str, int min, int max)
+string Read(const string& failename)
 {
-    int n;
-    while (true)
+    fstream file(failename);
+    string l, text;
+    while (getline(file, l))
     {
-        cout << str;
-        cin >> n;
-        if (cin.fail() || n < min || n > max) {
-            chistka();
-            cout << "Ошибка! Введите число от " << min << " до " << max << ": ";
-        }
-        else {
-            return n;
-        }
+        text += l + '\n';
     }
+    if (!text.empty() && text.back() == '\n')
+        text.pop_back();
+    return text;
 }
 
-double provD(const string& str, double min, double max)
+string Perebor(const string& text)
 {
-    double n;
-    while (true)
-    {
-        cout << str;
-        cin >> n;
-        if (cin.fail() || n < min || n > max) {
-            cout << "Ошибка! Введите число от " << min << " до " << max << ": ";
-            chistka();
-        }
-        else
-            return n;
-    }
-}
-
-void CrF(Nom_1 f[], int n)
-{
-    string name[] = {"Факультет информатики", "Факультет экономики",
-        "Факультет математики", "Юридический факультет",
-        "Факультет психологии", "Факультет филологии",
-        "Медицинский факультет", "Инженерный факультет" };
-
-    for (int i = 0; i < n; i++)
-    {
-        f[i].facultet = name[i];
-        f[i].d2023 = rand() % 100;
-        f[i].d2024 = rand() % 100;
-        f[i].d2025 = rand() % 100;
-        f[i].sum = f[i].d2023 + f[i].d2024 + f[i].d2025;
-    }
-}
-void vivod1(const Nom_1 f[], int n)
-{
-    cout << "Информация о задолженностях по факультетам:" << endl;
-    for (int i = 0; i < n; i++)
-    {
-        cout << f[i].facultet << endl;
-        cout << "2021: " << f[i].d2023 << endl;
-        cout << "2022: " << f[i].d2024 << endl;
-        cout << "2023: " << f[i].d2025 << endl;
-        cout << "Всего: " << f[i].sum << endl << endl;
-    }
-}
-
-void MinMax(const Nom_1 f[], int n, string& minF, string& maxF, int& minS, int& maxS)
-{
-    minS = f[0].sum;
-    maxS = f[0].sum;
-    minF = f[0].facultet;
-    maxF = f[0].facultet;
-    for (int i = 0; i < n; i++)
-    {
-        if (f[i].sum < minS)
+    string res;
+    set<char> seen;
+    for (char ch : text)
+        if (seen.find(ch) == seen.end())
         {
-            minS = f[i].sum;
-            minF = f[i].facultet;
+            seen.insert(ch);
+            res += ch;
         }
-        if (f[i].sum > maxS)
-        {
-            maxS = f[i].sum;
-            maxF = f[i].facultet;
-        }
-    }
- }
-void res1()
+    return res;
+}
+void vivod1(const string& inputF, const string& outputF)
 {
-    srand(time(0));
-    cout << "1.АКАДЕМИЧЕСКИЕ ЗАДОЛЖЕННОСТИ" << endl;
-    int n = prov("Введите количество факультетов (от 1 до 8): ", 1, 8);
-    Nom_1 f[8];
-    CrF(f, n);
-    vivod1(f,n);
-    string minF, maxF;
-    int minS, maxS;
-    MinMax(f, n, minF, maxF, minS, maxS);
-    cout << "РЕЗУЛЬТАТЫ" << endl;
-    cout << "Факультет с МИНИМАЛЬНЫМ количеством задолженностей (" << minS << "): " << minF << endl;
-    cout << "Факультет с МАКСИМАЛЬНЫМ количеством задолженностей (" << maxS << "): " << maxF << endl;
+    cout << "";
+    if (!Prov(inputF))
+    {
+        cout << "" << inputF << "" << endl;
+        return;
+    }
+    string text = Read(inputF), per = Perebor(text);
+
+    ofstream Sozd(outputF);
+    if (!Sozd)
+    {
+        cout << "" << outputF << endl;
+        return;
+    }
+    Sozd << per;
+    Sozd.close();
+
+    cout << "Готово! Уникальные символы (в порядке появления) сохранены в '" << outputF << "'" << endl;
+    cout << "Содержимое: '" << per << "'";
 }
