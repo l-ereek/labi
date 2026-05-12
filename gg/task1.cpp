@@ -1,24 +1,24 @@
 ﻿#include "dann.h"
 
-bool Prov(const string& failename)
+bool Prov(const string& filename)
 {
-    fstream f(failename);
-    if (!f.is_open())
-        return false;
-    f.seekg(0, ios::end);
-    bool empty = (f.tellg() == 0);
-    f.close();
-    return !empty;
+    ifstream fout(filename);
+    if (fout.is_open())
+    {
+        fout.seekg(0, ios::end);
+        bool pusto = (fout.tellg() == 0);
+        fout.close();
+        return !pusto;
+    }
+    return false;
 }
 
-string Read(const string& failename)
+string Read(const string& filename)
 {
-    fstream file(failename);
+    ifstream file(filename);
     string l, text;
     while (getline(file, l))
-    {
         text += l + '\n';
-    }
     if (!text.empty() && text.back() == '\n')
         text.pop_back();
     return text;
@@ -36,25 +36,28 @@ string Perebor(const string& text)
         }
     return res;
 }
+
 void vivod1(const string& inputF, const string& outputF)
 {
-    cout << "";
     if (!Prov(inputF))
     {
-        cout << "" << inputF << "" << endl;
+        cerr << "Ошибка: файл '" << inputF << "' не существует или пуст." << endl;
         return;
     }
-    string text = Read(inputF), per = Perebor(text);
 
-    ofstream Sozd(outputF);
-    if (!Sozd)
+    string text = Read(inputF);
+    string per = Perebor(text);
+
+    ofstream outFile(outputF);
+    if (!outFile)
     {
-        cout << "" << outputF << endl;
+        cerr << "Ошибка: не удалось создать файл '" << outputF << "'" << endl;
         return;
     }
-    Sozd << per;
-    Sozd.close();
+
+    outFile << per;
+    outFile.close();
 
     cout << "Готово! Уникальные символы (в порядке появления) сохранены в '" << outputF << "'" << endl;
-    cout << "Содержимое: '" << per << "'";
+    cout << "Содержимое: \"" << per << "\"" << endl;
 }
