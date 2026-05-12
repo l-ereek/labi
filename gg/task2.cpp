@@ -25,7 +25,7 @@ void FvG(const string& inputF, const string& outputF, const string& podstr)
 {
     if (!Prov(inputF))
     {
-        cerr << "Ошибка: файл '" << inputF << "' не существует или пуст." << endl;
+        cout << "Ошибка: файл '" << inputF << "' не существует или пуст." << endl;
         return;
     }
 
@@ -33,17 +33,17 @@ void FvG(const string& inputF, const string& outputF, const string& podstr)
     ofstream outFile(outputF);
     if (!outFile)
     {
-        cerr << "Ошибка: не удалось создать файл '" << outputF << "'" << endl;
+        cout << "Ошибка: не удалось создать файл '" << outputF << "'" << endl;
         return;
     }
 
-    string line;
+    string l;
     bool found = false;
-    while (getline(inFile, line))
+    while (getline(inFile, l))
     {
-        if (line.find(podstr) != string::npos)
+        if (l.find(podstr) != string::npos)
         {
-            outFile << line << '\n';
+            outFile << l << '\n';
             found = true;
         }
     }

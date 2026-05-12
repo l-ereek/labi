@@ -29,17 +29,9 @@ int main()
     while (prov)
     {
         podstr = VvodPodstr();
-
-        if (!PodStr(Nom2_Input_FileName, podstr))
-            cout << "Подстрока \"" << podstr << "\" не найдена в файле F." << endl;
         FvG(Nom2_Input_FileName, Nom2_Output_FileName, podstr);
-        if (PodStr(Nom2_Output_FileName, podstr))
-        {
-            cout << "Проверка: подстрока присутствует в файле G. Задание выполнено." << endl;
-            prov = Vopros();
-        }
-        else
-            prov = Vopros();
+        PodStr(Nom2_Output_FileName, podstr);
+        prov = Vopros();
     }
 
     cout << "\nПрограмма завершена." << endl;
