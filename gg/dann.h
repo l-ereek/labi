@@ -2,27 +2,29 @@
 #define DANN_H
 
 #include <iostream>
-#include <string>
-#include <fstream>
-#include <set>
+#include <vector>
+#include <chrono>
+#include <iomanip>
+#include <algorithm>
 
 using namespace std;
 
+// Функция для генерации случайного массива
+void generateRandomArray(vector<int>& arr, int size);
 
-const string Nom1_Input_FileName = "text.txt";
-const string Nom1_Output_FileName = "res.txt";
-const string Nom2_Input_FileName = "F.txt";
-const string Nom2_Output_FileName = "G.txt";
+// Функция для генерации упорядоченного массива
+void generateSortedArray(vector<int>& arr, int size);
 
-bool Prov(const string& filename);
-string Read(const string& filename);
-string Perebor(const string& text);
-void vivod1(const string& inputF, const string& outputF);
+// 1. Поиск с барьером в неупорядоченном массиве
+int barrierSearch(vector<int>& arr, int key);
 
-void Chistka();
-bool PodStr(const string& filename, const string& podstr);
-void FvG(const string& inputF, const string& outputF, const string& podstr);
-bool Vopros();
-string VvodPodstr();
+// 2. Бинарный поиск в упорядоченном массиве
+int binarySearch(vector<int>& arr, int key);
+
+// 3. Поиск фальшивой монеты (задача на взвешивание)
+int findFakeCoin(const vector<int>& coins, int& weighCount);
+
+// Функция для замера времени выполнения
+long long measureTime(int (*searchFunc)(vector<int>&, int), vector<int>& arr, int key);
 
 #endif
